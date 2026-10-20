@@ -1,0 +1,38 @@
+{
+  "windowMinutes": 20,
+  "maxExperienceYears": 3,
+  "linkedin": {
+    "enabled": true,
+    "location": "Colombia",
+    "queries": [
+      "desarrollador junior",
+      "backend developer",
+      "full stack developer",
+      ".NET developer",
+      "desarrollador C#",
+      "python developer"
+    ],
+    "pagesPerQuery": 1
+  },
+  "computrabajo": {
+    "enabled": true,
+    "baseUrl": "https://co.computrabajo.com",
+    "queries": [
+      "desarrollador junior",
+      "desarrollador net",
+      "desarrollador backend",
+      "desarrollador fullstack",
+      "desarrollador python",
+      "programador"
+    ]
+  },
+  "roleKeywords": [
+    "desarrollador", "developer", "programador", "programmer", "engineer", "ingeniero de software",
+    "software", "backend", "back-end", "back end", "frontend", "front-end", "front end",
+    "fullstack", "full stack", "full-stack"
+  ],
+  "techKeywords": [
+    ".net", "c#", "asp.net", "python", "react", "typescript", "javascript", "node", "sql", "java", "angular"
+  ],
+  "excludeKeywords": ["practicante de", "vendedor", "asesor comercial"]
+}

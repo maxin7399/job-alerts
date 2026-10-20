@@ -1,0 +1,61 @@
+name: check
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: job-alerts
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Cargar estado (rama state)
+        run: |
+          if git ls-remote --exit-code --heads origin state >/dev/null 2>&1; then
+            git clone --depth 1 --branch state "https://github.com/${GITHUB_REPOSITORY}.git" state-data
+          else
+            mkdir state-data
+          fi
+
+      - name: Ejecutar
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ALLOWED_CHAT_IDS: ${{ secrets.ALLOWED_CHAT_IDS }}
+          LINKEDIN_LI_AT: ${{ secrets.LINKEDIN_LI_AT }}
+        run: npm start
+
+      - name: Guardar estado
+        if: always()
+        run: |
+          cd state-data
+          [ -f state.json ] || { [ -d .git ] || exit 0; }
+          if [ ! -d .git ]; then
+            git init -q -b state
+            git remote add origin "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git"
+          else
+            git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git"
+          fi
+          git config user.name "job-alerts-bot"
+          git config user.email "job-alerts-bot@users.noreply.github.com"
+          [ -f state.json ] && git add state.json
+          # Commit siempre (aunque no cambie) para que el repo no se pause por inactividad a los 60 días.
+          git commit -q --allow-empty -m "state $(date -u +%FT%TZ)"
+          git push -q origin HEAD:state
