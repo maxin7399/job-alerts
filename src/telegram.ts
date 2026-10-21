@@ -69,10 +69,15 @@ export function parseCommands(
   return { cmds, offset };
 }
 
-export function statusText(state: State): string {
+export function statusText(state: State, now = Date.now()): string {
+  const paused = state.linkedinPausedUntil > now;
   return [
     `Bot: ${state.enabled ? "ENCENDIDO ✅" : "APAGADO ⏸"}`,
-    `LinkedIn: ${state.linkedinDisabled ? "desactivado por seguridad (usa /on para reactivar)" : "activo"}`,
+    `LinkedIn: ${state.linkedinDisabled
+      ? "desactivado por seguridad (usa /on para reactivar)"
+      : paused
+        ? `en pausa por límite de peticiones (${Math.ceil((state.linkedinPausedUntil - now) / 60000)} min)`
+        : "activo"}`,
     `Ofertas vistas: ${Object.keys(state.seen).length}`,
   ].join("\n");
 }
@@ -88,6 +93,7 @@ export async function processCommands(env: TelegramEnv, state: State): Promise<v
     if (cmd === "on") {
       state.enabled = true;
       state.linkedinDisabled = false;
+      state.linkedinPausedUntil = 0;
       state.failures = {};
     }
     if (cmd === "off") state.enabled = false;

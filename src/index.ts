@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { filterJobs, inWindow, titleMatches } from "./filter.js";
 import { enrichComputrabajo, fetchComputrabajo } from "./sources/computrabajo.js";
-import { enrichLinkedIn, fetchLinkedIn, LinkedInBlocked } from "./sources/linkedin.js";
+import { enrichLinkedIn, fetchLinkedIn, LinkedInBlocked, LinkedInRateLimited } from "./sources/linkedin.js";
 import { loadState, saveState } from "./state.js";
 import { formatJob, processCommands, sendMessage, type TelegramEnv } from "./telegram.js";
 import type { Config, Job } from "./types.js";
@@ -9,6 +9,7 @@ import type { Config, Job } from "./types.js";
 const dryRun = process.argv.includes("--dry-run");
 const stateDir = process.env.STATE_DIR ?? "state-data";
 const FAIL_ALERT_AT = 3;
+const LINKEDIN_PAUSE_MS = 60 * 60 * 1000;
 
 async function main() {
   const cfg = JSON.parse(await readFile("config.json", "utf8")) as Config;
@@ -52,7 +53,7 @@ async function main() {
   const fetched: Job[] = [];
   const sources: [string, () => Promise<Job[]>][] = [];
   if (cfg.computrabajo.enabled) sources.push(["computrabajo", () => fetchComputrabajo(cfg, now)]);
-  if (cfg.linkedin.enabled && !state.linkedinDisabled) {
+  if (cfg.linkedin.enabled && !state.linkedinDisabled && now.getTime() >= state.linkedinPausedUntil) {
     sources.push([
       "linkedin",
       async () => {
@@ -67,12 +68,15 @@ async function main() {
       fetched.push(...(await run()));
       state.failures[name] = 0;
     } catch (err) {
-      if (err instanceof LinkedInBlocked) {
+      if (err instanceof LinkedInRateLimited) {
+        state.linkedinPausedUntil = now.getTime() + LINKEDIN_PAUSE_MS;
+        console.error("LinkedIn limitó las peticiones (429): descansa 60 min.");
+      } else if (err instanceof LinkedInBlocked) {
         state.linkedinDisabled = true;
         console.error(`LinkedIn bloqueado: ${err.message}`);
         await notify(
           `🛑 LinkedIn pidió verificación o bloqueó la sesión (${err.message}). Lo desactivé y no reintentaré. ` +
-            `Revisa tu cuenta, renueva LINKEDIN_LI_AT si hace falta y envía /on para reactivarlo.`,
+            `Si usas LINKEDIN_LI_AT, revisa tu cuenta y renuévala si hace falta; luego envía /on para reactivarlo.`,
         );
       } else {
         await fail(name, err);

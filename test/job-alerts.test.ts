@@ -110,5 +110,7 @@ describe("telegram", () => {
   });
   it("estado", () => {
     expect(statusText(defaultState())).toContain("ENCENDIDO");
+    const paused = { ...defaultState(), linkedinPausedUntil: 1_000_000 + 30 * 60000 };
+    expect(statusText(paused, 1_000_000)).toContain("en pausa");
   });
 });

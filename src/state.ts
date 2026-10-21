@@ -7,6 +7,8 @@ export interface State {
   seen: Record<string, number>;
   telegramOffset: number;
   linkedinDisabled: boolean;
+  /** epoch ms hasta el que LinkedIn descansa tras un 429 */
+  linkedinPausedUntil: number;
   linkedinCursor: number;
   coldStartDone: boolean;
   failures: Record<string, number>;
@@ -17,6 +19,7 @@ export const defaultState = (): State => ({
   seen: {},
   telegramOffset: 0,
   linkedinDisabled: false,
+  linkedinPausedUntil: 0,
   linkedinCursor: 0,
   coldStartDone: false,
   failures: {},

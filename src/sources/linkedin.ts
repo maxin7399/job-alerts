@@ -5,6 +5,9 @@ import type { Config, Job } from "../types.js";
 /** Se lanza ante captcha/verificación/bloqueo: el llamador desactiva LinkedIn y avisa. */
 export class LinkedInBlocked extends Error {}
 
+/** 429: límite de peticiones. No es un bloqueo; el llamador pausa LinkedIn un rato. */
+export class LinkedInRateLimited extends Error {}
+
 const clean = (s: string) => s.replace(/\s+/g, " ").trim();
 
 export function parseSearch(html: string, now: Date): Job[] {
@@ -58,6 +61,7 @@ export async function fetchLinkedIn(cfg: Config, now: Date, liAt: string | undef
       `&location=${encodeURIComponent(cfg.linkedin.location)}&f_TPR=r${seconds}&sortBy=DD&start=${page * 10}`;
     const res = await getHtml(url, liAt ? { cookie: `li_at=${liAt}` } : {}, "manual");
     const reason = detectBlock(res.status, res.location, res.html);
+    if (res.status === 429) throw new LinkedInRateLimited(reason ?? "HTTP 429");
     if (reason) throw new LinkedInBlocked(reason);
     const jobs = parseSearch(res.html, now);
     out.push(...jobs);
