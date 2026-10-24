@@ -549,7 +549,7 @@
   "ct:1AEE245A7BE3743B61373E686DCF3405": 1792862119045,
   "ct:24817B9653E9944A61373E686DCF3405": 1792863017260,
   "li:4463934146": 1792867514787,
-  "li:4483342254": 1792868419676,
+  "li:4483342254": 1792868847087,
   "li:4482661309": 1792865714511,
   "ct:8A3354918224209461373E686DCF3405": 1792866618983,
   "li:4464242438": 1792865714511,
@@ -560,7 +560,7 @@
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 324,
+ "linkedinCursor": 325,
  "coldStartDone": true,
  "failures": {
   "computrabajo": 0,
