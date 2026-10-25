@@ -582,15 +582,15 @@
   "li:4316705619": 1792941316133,
   "li:4401790444": 1792941316133,
   "li:4401795165": 1792941316133,
-  "li:4427352897": 1792941316133
+  "li:4427352897": 1792942217089
  },
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 411,
+ "linkedinCursor": 412,
  "coldStartDone": true,
  "failures": {
-  "computrabajo": 65,
+  "computrabajo": 66,
   "linkedin": 0
  }
 }
