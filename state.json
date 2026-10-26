@@ -592,10 +592,10 @@
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 452,
+ "linkedinCursor": 453,
  "coldStartDone": true,
  "failures": {
-  "computrabajo": 106,
+  "computrabajo": 107,
   "linkedin": 0
  }
 }
