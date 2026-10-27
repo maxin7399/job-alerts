@@ -772,14 +772,14 @@
   "ct:F89974BAB9F9019D61373E686DCF3405": 1793071821728,
   "li:4483285730": 1793080823285,
   "li:4483788824": 1793076317235,
-  "li:4483604066": 1793078115232,
+  "li:4483604066": 1793081719534,
   "li:4483293314": 1793079020019,
   "li:4483297064": 1793079020019
  },
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 575,
+ "linkedinCursor": 576,
  "coldStartDone": true,
  "failures": {
   "computrabajo": 0,
