@@ -832,7 +832,7 @@
   "li:4484087051": 1793118620528,
   "li:4481899259": 1793113222855,
   "li:4484075653": 1793113222855,
-  "li:4475830227": 1793171720443,
+  "li:4475830227": 1793172621564,
   "li:4474034953": 1793119521833,
   "ct:F731EB589EE47F0761373E686DCF3405": 1793115918850,
   "li:4484086154": 1793120419567,
@@ -1035,10 +1035,10 @@
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 681,
+ "linkedinCursor": 682,
  "coldStartDone": true,
  "failures": {
-  "computrabajo": 31,
+  "computrabajo": 32,
   "linkedin": 0
  }
 }
