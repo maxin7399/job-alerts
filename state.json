@@ -1021,10 +1021,10 @@
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 663,
+ "linkedinCursor": 664,
  "coldStartDone": true,
  "failures": {
-  "computrabajo": 13,
+  "computrabajo": 14,
   "linkedin": 0
  }
 }
