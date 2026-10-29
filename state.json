@@ -1162,16 +1162,16 @@
   "li:4484751381": 1793235619020,
   "li:4484748730": 1793235619020,
   "li:4484764378": 1793235619020,
-  "li:4484775561": 1793237418267,
+  "li:4484775561": 1793241918385,
   "li:4482552458": 1793241023199
  },
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 762,
+ "linkedinCursor": 763,
  "coldStartDone": true,
  "failures": {
-  "computrabajo": 112,
+  "computrabajo": 113,
   "linkedin": 0
  }
 }
