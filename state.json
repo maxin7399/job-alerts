@@ -1191,10 +1191,10 @@
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 777,
+ "linkedinCursor": 778,
  "coldStartDone": true,
  "failures": {
-  "computrabajo": 127,
+  "computrabajo": 128,
   "linkedin": 0
  }
 }
