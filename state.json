@@ -1284,10 +1284,10 @@
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 874,
+ "linkedinCursor": 875,
  "coldStartDone": true,
  "failures": {
-  "computrabajo": 56,
+  "computrabajo": 57,
   "linkedin": 0
  }
 }
