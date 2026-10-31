@@ -2,3 +2,4 @@ node_modules/
 state-data/
 .env
 *.log
+README.md
