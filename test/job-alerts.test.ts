@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import config from "../config.json" with { type: "json" };
 import { detectYears, filterJobs } from "../src/filter.js";
 import { detectBlock, parseDetail, parseSearch as parseLi } from "../src/sources/linkedin.js";
-import { parseRelative, parseSearch as parseCt } from "../src/sources/computrabajo.js";
+import { isEmptyResult, parseRelative, parseSearch as parseCt } from "../src/sources/computrabajo.js";
 import { defaultState } from "../src/state.js";
 import { formatJob, parseCommands, statusText } from "../src/telegram.js";
 import type { Config, Job } from "../src/types.js";
@@ -45,6 +45,10 @@ describe("parseRelative", () => {
 });
 
 describe("parsers", () => {
+  it("Computrabajo: reconoce la página sin resultados", () => {
+    expect(isEmptyResult("<p>¡Ups! Parece que no hay ofertas para el empleo que buscas.</p>")).toBe(true);
+    expect(isEmptyResult(fx("computrabajo-search.html"))).toBe(false);
+  });
   it("Computrabajo", () => {
     const jobs = parseCt(fx("computrabajo-search.html"), "https://co.computrabajo.com", now);
     expect(jobs).toHaveLength(2);

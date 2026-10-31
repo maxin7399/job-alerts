@@ -44,6 +44,11 @@ export function parseSearch(html: string, baseUrl: string, now: Date): Job[] {
   return jobs;
 }
 
+/** La página sin resultados trae este aviso; es un caso normal, no un cambio de HTML. */
+export function isEmptyResult(html: string): boolean {
+  return /parece que no hay ofertas para el empleo que buscas/i.test(html);
+}
+
 export function parseDetail(html: string): string {
   const $ = cheerio.load(html);
   return clean($('div[div-link="oferta"]').first().text());
@@ -51,15 +56,24 @@ export function parseDetail(html: string): string {
 
 export async function fetchComputrabajo(cfg: Config, now: Date): Promise<Job[]> {
   const out: Job[] = [];
+  const errors: string[] = [];
   for (const q of cfg.computrabajo.queries) {
     const slug = q.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9#+.]+/g, "-");
     const url = `${cfg.computrabajo.baseUrl}/trabajo-de-${slug}?by=publicationtime&pubdate=1`;
     const res = await getHtml(url);
-    if (res.status !== 200) throw new Error(`Computrabajo HTTP ${res.status} en "${q}"`);
-    const jobs = parseSearch(res.html, cfg.computrabajo.baseUrl, now);
-    if (jobs.length === 0) throw new Error(`Computrabajo: 0 tarjetas en "${q}" (¿cambió el HTML?)`);
-    out.push(...jobs);
+    if (res.status !== 200) {
+      errors.push(`Computrabajo HTTP ${res.status} en "${q}"`);
+    } else {
+      const jobs = parseSearch(res.html, cfg.computrabajo.baseUrl, now);
+      if (jobs.length > 0) out.push(...jobs);
+      else if (!isEmptyResult(res.html)) errors.push(`Computrabajo: 0 tarjetas en "${q}" (¿cambió el HTML?)`);
+    }
     await jitter(500, 1500);
+  }
+  // Una búsqueda caída no debe tirar lo leído en las demás; solo es fallo si no se obtuvo nada.
+  if (errors.length) {
+    console.error(errors.join("\n"));
+    if (out.length === 0) throw new Error(errors[0]);
   }
   return out;
 }
