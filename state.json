@@ -1450,14 +1450,15 @@
   "li:4468033120": 1793455220665,
   "li:4431716566": 1793461516640,
   "li:4460111178": 1793459718222,
-  "li:4440617798": 1793462426092,
+  "li:4440617798": 1793463314413,
   "li:4485901538": 1793460618627,
-  "ct:8ACD369899BA717B61373E686DCF3405": 1793462426092
+  "ct:8ACD369899BA717B61373E686DCF3405": 1793462426092,
+  "li:4433359919": 1793463314413
  },
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 1019,
+ "linkedinCursor": 1020,
  "coldStartDone": true,
  "failures": {
   "computrabajo": 0,
