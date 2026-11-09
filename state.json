@@ -1989,14 +1989,14 @@
   "li:4465169003": 1794188718482,
   "li:4465157016": 1794188718482,
   "li:4488809782": 1794195017668,
-  "li:4487132017": 1794195017668,
+  "li:4487132017": 1794195915770,
   "li:4487114893": 1794195017668,
-  "li:4487113904": 1794195017668
+  "li:4487113904": 1794195915770
  },
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 1862,
+ "linkedinCursor": 1863,
  "coldStartDone": true,
  "failures": {
   "computrabajo": 0,
