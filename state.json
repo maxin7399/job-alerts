@@ -1990,12 +1990,13 @@
   "ct:8452C24796FA2CA761373E686DCF3405": 1794174318274,
   "li:4488806376": 1794178819898,
   "li:4465169003": 1794188718482,
-  "li:4465157016": 1794188718482
+  "li:4465157016": 1794188718482,
+  "li:4488809782": 1794193217190
  },
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 1859,
+ "linkedinCursor": 1860,
  "coldStartDone": true,
  "failures": {
   "computrabajo": 0,
