@@ -2018,12 +2018,13 @@
   "li:4489424161": 1794295819377,
   "li:4489409895": 1794295819377,
   "li:4489411536": 1794295819377,
-  "li:4489428047": 1794295819377
+  "li:4489428047": 1794295819377,
+  "li:4478292845": 1794301221087
  },
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 1982,
+ "linkedinCursor": 1983,
  "coldStartDone": true,
  "failures": {
   "computrabajo": 0,
