@@ -2014,12 +2014,13 @@
   "li:4487425601": 1794279625166,
   "ct:6C09EB2B453ECD2E61373E686DCF3405": 1794276918986,
   "ct:00EABB03DED79B3161373E686DCF3405": 1794276918986,
-  "li:4489138920": 1794279625166
+  "li:4489138920": 1794279625166,
+  "ct:41738C595A11ED3F61373E686DCF3405": 1794280517666
  },
  "telegramOffset": 926234788,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 1959,
+ "linkedinCursor": 1960,
  "coldStartDone": true,
  "failures": {
   "computrabajo": 0,
