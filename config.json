@@ -32,7 +32,7 @@
     "fullstack", "full stack", "full-stack"
   ],
   "techKeywords": [
-    ".net", "c#", "asp.net", "python", "react", "typescript", "javascript", "node", "sql", "java", "angular"
+    ".net", "c#", "asp.net", "python", "react", "typescript", "javascript", "node", "sql", "java", "angular", "php", "laravel", "vue", "mysql", "postgres"
   ],
   "excludeKeywords": ["practicante de", "vendedor", "asesor comercial"]
 }
