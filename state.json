@@ -2115,14 +2115,14 @@
   "ct:1EF1A412393B5CFC61373E686DCF3405": 1795150819889,
   "li:4492553053": 1795156219402,
   "li:4492542528": 1795151716878,
-  "li:4492541910": 1795154419456,
+  "li:4492541910": 1795159822120,
   "li:4492190963": 1795156219402,
   "li:4492796439": 1795158918196
  },
  "telegramOffset": 926234789,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 2969,
+ "linkedinCursor": 2970,
  "coldStartDone": true,
  "failures": {
   "computrabajo": 0,
