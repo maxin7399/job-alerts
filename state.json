@@ -2128,12 +2128,14 @@
   "li:4494497031": 1795589118125,
   "li:4494492727": 1795591825469,
   "li:4494488625": 1795592719968,
-  "li:4494497213": 1795592719968
+  "li:4494497213": 1795592719968,
+  "ct:CEA65B3D240824D361373E686DCF3405": 1795596315445,
+  "ct:18C4807DD612B84361373E686DCF3405": 1795596315445
  },
  "telegramOffset": 926234789,
  "linkedinDisabled": false,
  "linkedinPausedUntil": 0,
- "linkedinCursor": 3466,
+ "linkedinCursor": 3467,
  "coldStartDone": true,
  "failures": {
   "computrabajo": 0,
